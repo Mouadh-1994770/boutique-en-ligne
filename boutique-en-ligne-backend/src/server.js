@@ -59,5 +59,39 @@ app.put('/api/produit/ajouter', (requete, reponse) => {
     }
 });
 
+app.post('/api/produit/modifier/:id', (requete, reponse) => {
+    const { nom, description, categorie, prix, rabais, quantite } = requete.body;
+    const id = requete.params.id;
+    if (nom !== undefined && description !== undefined && categorie !== undefined && prix > 0 &&
+        ((rabais >= 0) && (rabais < 100)) && quantite >= 0) {
+        utiliserDB(async (db) => {
+            var objectId = ObjectID.createFromHexString(id);
+            await db.collection('produits').updateOne({ _id: objectId }, {
+                '$set': {
+                    nom: nom,
+                    description: description,
+                    categorie: categorie,
+                    prix: prix,
+                    rabais: rabais,
+                    quantite: quantite
+                }
+            });
+
+            reponse.status(200).send("Produit modifié");
+        }, reponse).catch(
+            () => reponse.status(500).send("Erreur : la produit n'a pas été modifié")
+        );
+    }
+    else {
+        reponse.status(500).send(`Certains paramètres ne sont pas correctement définis :
+            - nom: ${nom}
+            - description: ${description}
+            - categorie: ${categorie}
+            - prix: ${prix}
+            - rabais: ${rabais}
+            - quantite: ${quantite}`);
+    }
+});
+
 
 app.listen(8000, () => console.log('Écoute le port 8000'));
