@@ -93,5 +93,17 @@ app.post('/api/produit/modifier/:id', (requete, reponse) => {
     }
 });
 
+app.delete('/api/produit/supprimer/:id', (requete, reponse) => {
+    const id = requete.params.id;
+
+    utiliserDB(async (db) => {
+        var objectId = ObjectID.createFromHexString(id);
+        const resultat = await db.collection('produits').deleteOne({ _id: objectId });
+
+        reponse.status(200).send(`${resultat.deletedCount} produit supprimée`);
+    }, reponse).catch(
+        () => reponse.status(500).send("Erreur : le produit n'a pas été supprimée")
+    );
+});
 
 app.listen(8000, () => console.log('Écoute le port 8000'));
