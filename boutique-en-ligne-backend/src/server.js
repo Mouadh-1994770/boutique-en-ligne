@@ -106,4 +106,18 @@ app.delete('/api/produit/supprimer/:id', (requete, reponse) => {
     );
 });
 
+app.get('/api/produitsClient', async (requete, reponse) => {
+    var tableProduit = [];
+    utiliserBD(async (db) => {
+        const produits = await db.collection('produits').find().toArray();
+        produits.map(produit => {
+            if (produit.rabais == 0) {
+                produit.rabais = "";
+            }
+            tableProduit.push(produit);
+        })
+        reponse.status(200).json(tableProduit);
+    }, reponse)
+});
+
 app.listen(8000, () => console.log('Écoute le port 8000'));
