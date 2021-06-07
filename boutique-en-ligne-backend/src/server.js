@@ -121,11 +121,28 @@ app.get('/api/produitsClient', async (requete, reponse) => {
 });
 
 app.get('/api/produits/:categorie', async (requete, reponse) => {
-    const categorie=requete.params.categorie
+    const categorie = requete.params.categorie
     utiliserBD(async (db) => {
-    const produits = await db.collection('produits').find({categorie:categorie}).toArray();
-    reponse.status(200).json(produits);
+        const produits = await db.collection('produits').find({ categorie: categorie }).toArray();
+        reponse.status(200).json(produits);
     }, reponse)
-  });
-  
+});
+
+app.post('/api/panier/ajouter/:nomClient', (requete, reponse) => {
+    const nomClient = requete.params.nomClient
+    const produit = requete.body;
+    if (nomClient !== undefined) {
+        utiliserBD(async (db) => {
+            await db.collection('panier').updateOne({ "nomClient": nomClient }, { $addToSet: { "produits": produit } });
+            reponse.status(200).send('produit a ajouté');
+        }, reponse).catch(
+            () => reponse.status(500).send("Erreur : le produit  n'a pas été ajouté")
+        );
+    }
+    else {
+        reponse.status(500).send(`nom du client n'est pas définis :
+          - nomClient: ${nomClient}`)
+    }
+});
+
 app.listen(8000, () => console.log('Écoute le port 8000'));
