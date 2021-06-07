@@ -120,4 +120,12 @@ app.get('/api/produitsClient', async (requete, reponse) => {
     }, reponse)
 });
 
+app.get('/api/produits/:categorie', async (requete, reponse) => {
+    const categorie=requete.params.categorie
+    utiliserBD(async (db) => {
+    const produits = await db.collection('produits').find({categorie:categorie}).toArray();
+    reponse.status(200).json(produits);
+    }, reponse)
+  });
+  
 app.listen(8000, () => console.log('Écoute le port 8000'));
