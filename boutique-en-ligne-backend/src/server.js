@@ -145,7 +145,7 @@ app.post('/api/panier/ajouter/:nomClient', (requete, reponse) => {
     const produit = requete.body;
     if (nomClient !== undefined) {
         utiliserBD(async (db) => {
-            await db.collection('panier').updateOne({ "nomClient": nomClient }, { $addToSet: { "produits": produit } });
+            await db.collection('panier').updateOne({ "nomClient": nomClient }, { $push: { "produits": produit } });
             reponse.status(200).send('produit a ajouté');
         }, reponse).catch(
             () => reponse.status(500).send("Erreur : le produit  n'a pas été ajouté")
