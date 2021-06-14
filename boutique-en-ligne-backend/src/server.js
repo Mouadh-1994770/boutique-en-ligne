@@ -28,13 +28,13 @@ app.get('/api/produits', (requete, reponse) => {
     );;
 });
 
-app.put('/api/produit/ajouter', (requete, reponse) => {
+app.put('/api/produits/ajouter', (requete, reponse) => {
     const { nom, description, categorie, prix, rabais, quantite } = requete.body;
 
     if (nom !== undefined && description !== undefined && categorie !== undefined && prix > 0 &&
         ((rabais >= 0) && (rabais < 100)) && quantite >= 0) {
         utiliserDB(async (db) => {
-            await db.collection('pieces').insertOne({
+            await db.collection('produits').insertOne({
                 nom: nom,
                 description: description,
                 categorie: categorie,
@@ -59,7 +59,7 @@ app.put('/api/produit/ajouter', (requete, reponse) => {
     }
 });
 
-app.post('/api/produit/modifier/:id', (requete, reponse) => {
+app.post('/api/produits/modifier/:id', (requete, reponse) => {
     const { nom, description, categorie, prix, rabais, quantite } = requete.body;
     const id = requete.params.id;
     if (nom !== undefined && description !== undefined && categorie !== undefined && prix > 0 &&
@@ -93,7 +93,7 @@ app.post('/api/produit/modifier/:id', (requete, reponse) => {
     }
 });
 
-app.delete('/api/produit/supprimer/:id', (requete, reponse) => {
+app.delete('/api/produits/supprimer/:id', (requete, reponse) => {
     const id = requete.params.id;
 
     utiliserDB(async (db) => {
