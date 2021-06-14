@@ -1,17 +1,15 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import ListeDesProduits from '../Composants/ListeDesProduits';
-import Container from 'react-bootstrap/Col'
+import ListeDesProduits from './ListeDesProduits';
+import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-function Client() {
+function pageClient() {
     const [listeproduits, setProduits] = useState([]);
     useEffect(() => {
         const chercherDonnees = async () => {
-            setChargement(true);
             const resultat = await fetch(`/api/produitsClient`);
             var body = await resultat.json().catch((error) => { console.log(error) });
             setProduits(body);
-            setChargement(false)
         };
         chercherDonnees();
     }, []);
@@ -22,4 +20,4 @@ function Client() {
             </Row>
         </Container>
     )
-} export default Client;
+} export default pageClient;

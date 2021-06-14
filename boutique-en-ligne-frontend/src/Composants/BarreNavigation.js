@@ -16,6 +16,9 @@ function BarreNavigation() {
                     <LinkContainer to="/" exact>
                         <Nav.Link><h2>Accueil</h2></Nav.Link>
                     </LinkContainer>
+                    <LinkContainer to="/Client" exact>
+                        <Nav.Link><h2>EspaceClient</h2></Nav.Link>
+                    </LinkContainer>
                 </Nav>
                 <Form className="page1">
                     <div className="con">
