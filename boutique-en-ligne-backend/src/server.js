@@ -28,6 +28,18 @@ app.get('/api/produits', (requete, reponse) => {
     );;
 });
 
+app.get('/api/produits/:id', (requete, reponse) => {
+    const id = requete.params.id;
+
+    utiliserDB(async (db) => {
+        var objectId = ObjectID.createFromHexString(id);
+        const infoProduit = await db.collection('produits').findOne({ _id: objectId });
+        reponse.status(200).json(infoProduit);
+    }, reponse).catch(
+        () => reponse.status(500).send("Produit non trouvé")
+    );
+});
+
 app.put('/api/produits/ajouter', (requete, reponse) => {
     const { nom, description, categorie, prix, rabais, quantite } = requete.body;
 
