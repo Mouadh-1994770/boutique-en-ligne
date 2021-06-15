@@ -38,7 +38,31 @@ function AffichageProduits({ produits, nomClient }) {
     return (
         <Container>
             <Row>
+                <Col>
+                    {produits.map((produit, index) => {
+                        return (
+                            <CardColumns>
+                                <Card>
+                                    <Card.Body key={index}>
+                                        <Card.Title>{produit.nom}</Card.Title>
+                                        <Card.Text> Description: {produit.description.substring(0, 50)}...</Card.Text>
+                                        <Card.Text>Categorie: {produit.categorie}</Card.Text>
+                                        <Card.Text>Prix:  {produit.prix}$</Card.Text>
+                                        <Card.Text >{produit.rabais ? "Rabais:  " : ""} {produit.rabais ? produit.rabais + "%" : ""}</Card.Text>
+                                        <Card.Text>{produit.rabais ? "nouveauPrix:  " : ""} {produit.rabais ? produit.prix - (produit.prix * produit.rabais / 100) + "$" : " "}</Card.Text>
+                                        <Card.Text variant="danger">Quantite: {produit.quantite}</Card.Text>
+                                        <Card.Text> {produit.quantite > 0 ?
+                                            <Button onClick={() => AjouterProduitAuPanier(produit, index)}>Ajouter produit au panier</Button> :
+                                            <Alert variant="danger">produit en rupture</Alert>}
+                                        </Card.Text>
 
+                                    </Card.Body>
+                                </Card>
+                            </CardColumns>
+                        )
+                    })
+                    }
+                </Col>
             </Row>
         </Container>
     )
