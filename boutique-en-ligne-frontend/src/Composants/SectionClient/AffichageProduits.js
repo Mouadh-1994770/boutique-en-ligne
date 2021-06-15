@@ -9,9 +9,6 @@ import Container from 'react-bootstrap/Col'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 function AffichageProduits({ produits, nomClient }) {
-
-    function AffichageProduits({ produits, nomClient }) {
-
         const [quantiteProduit, setQuantite] = useState(produits);
         const [ajout, setAjout] = useState(false);
         function AjouterProduitAuPanier(produit, index) {
@@ -34,7 +31,6 @@ function AffichageProduits({ produits, nomClient }) {
                 }
             }
         }
-    }
     return (
         <Container>
             <Row>
