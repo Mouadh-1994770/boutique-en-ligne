@@ -20,7 +20,14 @@ function AffichageProduits({ produits, nomClient }) {
                         'Content-Type': 'application/json'
                     }
                 })
-                setAjout(true)
+                .then((response) => {
+                    if (response.status === 200) {
+                        alert("le produit est bien ajouté au panier")
+                    }
+                    else {
+                        alert("Le produit n'a pas été ajoutée")
+                    }
+                })
             }
             EnvoyerProduit()
             var nouvelleQuantite = quantiteProduit.slice();
