@@ -9,17 +9,25 @@ import Container from 'react-bootstrap/Col'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 function AffichageProduits({ produits, nomClient }) {
-        const [quantiteProduit, setQuantite] = useState(produits);
-        const [ajout, setAjout] = useState(false);
-        function AjouterProduitAuPanier(produit, index) {
-            const EnvoyerProduit = async () => {
-                var response = await fetch(`/api/panier/ajouter/${nomClient}`, {
-                    method: 'post',
-                    body: JSON.stringify({ produit }),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
+    const [quantiteProduit, setQuantite] = useState(produits);
+    const [page, setPage] = useState(5);
+    const [pageCourant, setPageCourant] = useState(1);
+    const [quantiteProduit, setQuantite] = useState(produits);
+    const dernierPage = pageCourant * page;
+    const premierPage = dernierPage - page;
+    const publicationCourant = produits.slice(premierPage, dernierPage)
+    const longueurList = produits.length;
+    const publication = (numeoPage) => setPageCourant(numeoPage)
+    
+    function AjouterProduitAuPanier(produit, index) {
+        const EnvoyerProduit = async () => {
+            var response = await fetch(`/api/panier/ajouter/${nomClient}`, {
+                method: 'post',
+                body: JSON.stringify({ produit }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
                 .then((response) => {
                     if (response.status === 200) {
                         alert("le produit est bien ajouté au panier")
@@ -28,16 +36,16 @@ function AffichageProduits({ produits, nomClient }) {
                         alert("Le produit n'a pas été ajoutée")
                     }
                 })
-            }
-            EnvoyerProduit()
-            var nouvelleQuantite = quantiteProduit.slice();
-            if (produit !== undefined) {
-                if (nouvelleQuantite[index].quantite > 0) {
-                    nouvelleQuantite[index].quantite -= 1;
-                    setQuantite(nouvelleQuantite)
-                }
+        }
+        EnvoyerProduit()
+        var nouvelleQuantite = quantiteProduit.slice();
+        if (produit !== undefined) {
+            if (nouvelleQuantite[index].quantite > 0) {
+                nouvelleQuantite[index].quantite -= 1;
+                setQuantite(nouvelleQuantite)
             }
         }
+    }
     return (
         <Container>
             <Row>
@@ -65,6 +73,11 @@ function AffichageProduits({ produits, nomClient }) {
                         )
                     })
                     }
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Pagination pagePublier={page} totalPublication={longueurList} publication={publication} />
                 </Col>
             </Row>
         </Container>
