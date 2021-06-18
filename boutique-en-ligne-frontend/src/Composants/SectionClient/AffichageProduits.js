@@ -8,8 +8,10 @@ import { useState } from 'react';
 import Container from 'react-bootstrap/Col'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import Pagination from './Pagination'
+import NombreProduitParPublication from './NombreProduitParPublication'
 function AffichageProduits({ produits, nomClient }) {
-    const [quantiteProduit, setQuantite] = useState(produits);
+
     const [page, setPage] = useState(5);
     const [pageCourant, setPageCourant] = useState(1);
     const [quantiteProduit, setQuantite] = useState(produits);
@@ -53,7 +55,7 @@ function AffichageProduits({ produits, nomClient }) {
         <Container>
              <Row>
             <Alert variant={"primary"} className="mt-3"> <h1>Voir nos produits</h1> </Alert>
-            <NombreProduitParpagePublication handleChange={handleChange} longueurList={longueurList} />
+            <NombreProduitParPublication handleChange={handleChange} longueurList={longueurList} />
             </Row>
             <Row>
                 <Col>

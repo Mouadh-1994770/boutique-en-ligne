@@ -1,6 +1,6 @@
 import React from 'react'
 
-function NombreProduitParPublication() {
+function NombreProduitParPublication(props) {
     return (
         <>
             <div className="col-md-4">Sélectionner le nombre des produits par page </div>

@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Form from 'react-bootstrap/Form'
 import { useState, useEffect } from 'react';
+import AffichageProduits from './AffichageProduits'
 function ProduitsParCategorie({ produits, Categories }) {
     const [listFilter, setListeFilter] = useState([])
     const [listeproduits, setProduits] = useState([]);

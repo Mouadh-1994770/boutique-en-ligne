@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import ListeDesProduits from './ProduitsParCategorie';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-function pageClient() {
+function PageClient() {
     const [listeproduits, setProduits] = useState([]);
     useEffect(() => {
         const chercherDonnees = async () => {
@@ -21,4 +21,5 @@ function pageClient() {
             </Row>
         </Container>
     )
-} export default pageClient;
+} 
+export default PageClient;
