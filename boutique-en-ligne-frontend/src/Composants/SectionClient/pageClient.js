@@ -13,10 +13,11 @@ function pageClient() {
         };
         chercherDonnees();
     }, []);
+    const listeCategories = [...new Set(listeproduits.map(produit => produit.categorie))];
     return (
         <Container>
             <Row>
-                <ListeDesProduits produits={listeproduits} charge={chargement} />
+                <ListeDesProduits produits={listeproduits} Categories={listeCategories} />
             </Row>
         </Container>
     )
