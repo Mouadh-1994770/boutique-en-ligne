@@ -8,7 +8,7 @@ app.use(express.json());
 const utiliserDB = async (operations, reponse) => {
     try {
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
-        const db = client.db('boutique');
+        const db = client.db('BoutiqueEnLigne');
 
         await operations(db);
 
@@ -157,5 +157,52 @@ app.post('/api/panier/ajouter/:nomClient', (requete, reponse) => {
           - nomClient: ${nomClient}`)
     }
 });
+
+app.post('/api/utilisateur/ajouter', async (requete, reponse) => {
+    const {role, nom, password, confirmPassword} = requete.body;
+
+    if(role !==undefined && nom !== undefined && password !== undefined && confirmPassword !== undefined ){  
+        utiliserDB(async (db) => {
+            
+         let user =  await db.collection('utilisateur').insertOne({
+                role:role,
+                nom: nom,
+                password: password,
+                confirmPassword: confirmPassword, 
+            });
+            reponse.status(200).send("Utilisateur Ajouté")
+        }, reponse).catch(
+            () => reponse.status(400).send("Erreur : l'utilisateur n'est pas ajouté ")
+        );  
+    }
+    else{
+        reponse.status(500).send(`Certains paramètres ne sont pas définis :
+            - nom: ${role}
+            - nom: ${nom}
+            - password: ${password}
+            - confirmPassword: ${confirmPassword}`);
+    }          
+});
+
+app.post('/api/utilisateur/existe', (requete, reponse) => {
+
+    utiliserDB(async (db) => {
+        let user= await db.collection('utilisateur').fineOne({ nom: requete.body.nom});
+        if(user){
+            const validPassword = await bcryp.compare(body.password, user.password);
+            if(validPassword){
+                reponse.status(200).json({messsage:  "Mot de passe valide" })
+            }
+            else{
+                reponse.status(400).json({ error: "Mot de passe invalide" });
+            }
+        }
+        else{
+            reponse.status(401).json({ error: "L'utilisateur n'existe pas" });
+        }
+        reponse.send(true);
+    });
+});
+
 
 app.listen(8000, () => console.log('Écoute le port 8000'));
