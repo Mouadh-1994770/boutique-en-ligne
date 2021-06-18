@@ -46,8 +46,15 @@ function AffichageProduits({ produits, nomClient }) {
             }
         }
     }
+    const handleChange = (e) => {
+        setPage(e.target.value)
+    }
     return (
         <Container>
+             <Row>
+            <Alert variant={"primary"} className="mt-3"> <h1>Voir nos produits</h1> </Alert>
+            <NombreProduitParpagePublication handleChange={handleChange} longueurList={longueurList} />
+            </Row>
             <Row>
                 <Col>
                     {produits.map((produit, index) => {
@@ -59,8 +66,8 @@ function AffichageProduits({ produits, nomClient }) {
                                         <Card.Text> Description: {produit.description.substring(0, 50)}...</Card.Text>
                                         <Card.Text>Categorie: {produit.categorie}</Card.Text>
                                         <Card.Text>Prix:  {produit.prix}$</Card.Text>
-                                        <Card.Text >{produit.rabais ? "Rabais:  " : ""} {produit.rabais ? produit.rabais + "%" : ""}</Card.Text>
-                                        <Card.Text>{produit.rabais ? "nouveauPrix:  " : ""} {produit.rabais ? produit.prix - (produit.prix * produit.rabais / 100) + "$" : " "}</Card.Text>
+                                        <Card.Text className="text-danger">{produit.rabais ? "Rabais:  " : ""} {produit.rabais ? produit.rabais + "%" : ""}</Card.Text>
+                                        <Card.Text className="text-danger">{produit.rabais ? "nouveauPrix:  " : ""} {produit.rabais ? produit.prix - (produit.prix * produit.rabais / 100) + "$" : " "}</Card.Text>
                                         <Card.Text variant="danger">Quantite: {produit.quantite}</Card.Text>
                                         <Card.Text> {produit.quantite > 0 ?
                                             <Button onClick={() => AjouterProduitAuPanier(produit, index)}>Ajouter produit au panier</Button> :

@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Form from 'react-bootstrap/Form'
 import { useState, useEffect } from 'react';
-export default function ListeDesProduits({ produits, Categories }) {
+function ProduitsParCategorie({ produits, Categories }) {
     const [listFilter, setListeFilter] = useState([])
     const [listeproduits, setProduits] = useState([]);
     const [tous, setTous] = useState(true)
@@ -113,5 +113,5 @@ export default function ListeDesProduits({ produits, Categories }) {
     else {
         return <Alert variant={"info"} >Aucun produit disponible</Alert>;
     }
-} export default ListeDesProduits;
+} export default ProduitsParCategorie;
 

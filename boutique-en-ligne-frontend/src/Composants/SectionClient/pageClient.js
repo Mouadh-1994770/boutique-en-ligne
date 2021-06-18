@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import ListeDesProduits from './ListeDesProduits';
+import ListeDesProduits from './ProduitsParCategorie';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 function pageClient() {
