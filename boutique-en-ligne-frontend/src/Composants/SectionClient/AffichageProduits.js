@@ -21,7 +21,7 @@ function AffichageProduits({ produits, nomClient }) {
     
     function AjouterProduitAuPanier(produit, index) {
         const EnvoyerProduit = async () => {
-            var response = await fetch(`/api/panier/ajouter/${nomClient}`, {
+            await fetch(`/api/panier/ajouter/${nomClient}`, {
                 method: 'post',
                 body: JSON.stringify({ produit }),
                 headers: {
@@ -57,7 +57,7 @@ function AffichageProduits({ produits, nomClient }) {
             </Row>
             <Row>
                 <Col>
-                    {produits.map((produit, index) => {
+                    {publicationCourant.map((produit, index) => {
                         return (
                             <CardColumns>
                                 <Card>
