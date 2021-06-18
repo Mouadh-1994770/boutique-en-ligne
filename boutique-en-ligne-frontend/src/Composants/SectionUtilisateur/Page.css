@@ -1,0 +1,53 @@
+@media all and (min-width:500px) {  
+  .Login form {
+    margin: 0 auto;
+    max-width: 950px;
+  }
+  .con{
+    float: right;
+    font-weight: "bold";
+  }
+  .page1{
+      width: 1100px;
+      float: right;
+      
+  }
+  .page2{
+    padding-right: 20px;
+    float: right;
+  } 
+  .name, 
+  .password{
+    margin:10px;
+    font-size: 20px;
+  }
+  h4{
+  vertical-align: middle;
+  display: inline-block;
+  line-height: 20px;
+  padding: 10px;
+  color: rgb(16, 160, 59);
+
+  }
+  .input{
+    height: 35px;
+    font-size: 20px;
+    outline: none;
+    width: 21%;
+    border-top-style: none;
+    border-right-style:none;
+    border-left-style:none;
+    margin-bottom: 5px;
+  }
+  .label{
+    width: 15%;
+  }
+  .label3{
+    width: 10%;
+  }
+  .error{
+    color: red;
+  }
+}
+
+
