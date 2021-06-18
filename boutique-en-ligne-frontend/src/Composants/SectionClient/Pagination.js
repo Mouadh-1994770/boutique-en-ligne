@@ -8,7 +8,7 @@ function Pagination(props) {
         <nav>
             <ul className="pagination">
                 {numeroDePage.map((numero) =>
-                    <li className="page-item">
+                    <li key="numero" className="page-item">
                         <a href="#"
                             onClick={() => props.publication(numero)}
                             className='page-link'>{numero}</a>

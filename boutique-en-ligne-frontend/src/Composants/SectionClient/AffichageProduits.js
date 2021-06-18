@@ -61,7 +61,7 @@ function AffichageProduits({ produits, nomClient }) {
                 <Col>
                     {publicationCourant.map((produit, index) => {
                         return (
-                            <CardColumns>
+                            <CardColumns key="index">
                                 <Card>
                                     <Card.Body key={index}>
                                         <Card.Title>{produit.nom}</Card.Title>
