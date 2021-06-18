@@ -8,7 +8,7 @@ app.use(express.json());
 const utiliserDB = async (operations, reponse) => {
     try {
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
-        const db = client.db('boutique');
+        const db = client.db('BoutiqueEnLigne');
 
         await operations(db);
 
@@ -45,7 +45,7 @@ app.put('/api/produits/ajouter', (requete, reponse) => {
 
     if (nom !== undefined && description !== undefined && categorie !== undefined && prix > 0 &&
         ((rabais >= 0) && (rabais < 100)) && quantite >= 0) {
-        utiliserDB(async (db) => {
+            utiliserDB(async (db) => {
             await db.collection('produits').insertOne({
                 nom: nom,
                 description: description,
@@ -76,7 +76,7 @@ app.post('/api/produits/modifier/:id', (requete, reponse) => {
     const id = requete.params.id;
     if (nom !== undefined && description !== undefined && categorie !== undefined && prix > 0 &&
         ((rabais >= 0) && (rabais < 100)) && quantite >= 0) {
-        utiliserDB(async (db) => {
+            utiliserDB(async (db) => {
             var objectId = ObjectID.createFromHexString(id);
             await db.collection('produits').updateOne({ _id: objectId }, {
                 '$set': {
@@ -120,7 +120,7 @@ app.delete('/api/produits/supprimer/:id', (requete, reponse) => {
 
 app.get('/api/produitsClient', async (requete, reponse) => {
     var tableProduit = [];
-    utiliserBD(async (db) => {
+    utiliserDB(async (db) => {
         const produits = await db.collection('produits').find().toArray();
         produits.map(produit => {
             if (produit.rabais == 0) {
@@ -128,13 +128,14 @@ app.get('/api/produitsClient', async (requete, reponse) => {
             }
             tableProduit.push(produit);
         })
+        console.log(tableProduit)
         reponse.status(200).json(tableProduit);
     }, reponse)
 });
 
-app.get('/api/produits/:categorie', async (requete, reponse) => {
+app.get('/api/produitsClient/:categorie', async (requete, reponse) => {
     const categorie = requete.params.categorie
-    utiliserBD(async (db) => {
+    utiliserDB(async (db) => {
         const produits = await db.collection('produits').find({ categorie: categorie }).toArray();
         reponse.status(200).json(produits);
     }, reponse)
@@ -144,7 +145,7 @@ app.post('/api/panier/ajouter/:nomClient', (requete, reponse) => {
     const nomClient = requete.params.nomClient
     const produit = requete.body;
     if (nomClient !== undefined) {
-        utiliserBD(async (db) => {
+        utiliserDB(async (db) => {
             await db.collection('panier').updateOne({ "nomClient": nomClient }, { $push: { "produits": produit } });
             reponse.status(200).send('produit a ajouté');
         }, reponse).catch(

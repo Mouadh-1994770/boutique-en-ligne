@@ -11,6 +11,7 @@ function PageClient() {
             var body = await resultat.json().catch((error) => { console.log(error) });
             setProduits(body);
         };
+      
         chercherDonnees();
     }, []);
     const listeCategories = [...new Set(listeproduits.map(produit => produit.categorie))];
