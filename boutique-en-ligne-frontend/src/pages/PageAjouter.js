@@ -1,5 +1,5 @@
 import React from 'react';
-import FormulaireAjouterProduit from '../composants/FormulaireAjouterProduit';
+import FormulaireAjouterProduit from '../Composants/FormulaireAjouterProduit';
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom';
 

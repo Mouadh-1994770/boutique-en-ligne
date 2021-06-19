@@ -3,7 +3,7 @@ import {
     useState,
     useEffect
 } from 'react';
-import ListeProduitsAdministrateur from '../composants/ListeProduitsAdministrateur';
+import ListeProduitsAdministrateur from '../Composants/ListeProduitsAdministrateur';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { Nav, NavDropdown, FormControl, Form, Navbar, Col, Row, Container } from 'react-bootstrap';

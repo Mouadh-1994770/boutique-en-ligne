@@ -10,12 +10,12 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { Nav, NavDropdown, FormControl, Form, Navbar, Col, Row, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import TriParCategorie from './Tri/TriParCategorie';
-import TriParNom from './Tri/TriParNom';
-import TriParPrix from './Tri/TriParPrix';
-import TriParRabais from './Tri/TriParRabais';
-import TriParQuantite from './Tri/TriParQuantite';
-import TriParDescription from './Tri/TriParDescription';
+import TriParCategorie from './tri/TriParCategorie';
+import TriParNom from './tri/TriParNom';
+import TriParPrix from './tri/TriParPrix';
+import TriParRabais from './tri/TriParRabais';
+import TriParQuantite from './tri/TriParQuantite';
+import TriParDescription from './tri/TriParDescription';
 import Recherche from './Recherche';
 
 
