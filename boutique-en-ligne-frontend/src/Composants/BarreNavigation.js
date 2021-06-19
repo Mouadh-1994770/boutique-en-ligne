@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 function BarreNavigation() {
+    
     return (
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="m-3">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
