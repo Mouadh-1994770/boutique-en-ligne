@@ -1,53 +1,36 @@
 import React from 'react';
-import Table from 'react-bootstrap/Table'
-import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import AffichageTableau from '../AffichageTableau';
 
-function AffichageTableau({ produits }) {
+function TriParNom({ produits, ordre }) {
 
-    return (
-        <>
-            <Table>
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Description</th>
-                        <th>Categorie</th>
-                        <th>Prix</th>
-                        <th>Rabais</th>
-                        <th>Quantité Disponible</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        produits.map(produit => {
-                            return (
-                                <>
-                                    <tr>
-                                        <td> {produit.nom} </td>
-                                        <td> {produit.description}</td>
-                                        <td> {produit.categorie}</td>
-                                        <td> {produit.prix}</td>
-                                        <td> {produit.rabais}</td>
-                                        <td> {produit.quantite}</td>
-                                        <td> <Link to={`/modifier/${produit._id}`}>
-                                            <Button variant="success" className="m-1" size="sm" >Modifier</Button>
-                                        </Link>
-                                        </td>
-                                        <td>
-                                            <Link to={`/supprimer/${produit._id}`}>
-                                                <Button variant="danger" className="m-1" size="sm" >Supprimer</Button>
-                                            </Link>
-                                        </td>
-                                    </tr>
-                                </>
-                            )
-                        })
-                    }
-                </tbody>
-            </Table>
-        </>
+  if (ordre === 'croissant') {
+    produits.sort((a, b) => {
+      if (a.nom < b.nom) {
+        return -1;
+      }
+      if (a.nom > b.nom) {
+        return 1;
+      }
+      return 0;
+
+    }
     );
+  }
+  else if (ordre === 'decroissant') {
+    produits.sort((a, b) => {
+      if (a.nom < b.nom) {
+        return 1;
+      }
+      if (a.nom > b.nom) {
+        return -1;
+      }
+      return 0;
+    }
+    );
+  }
+  return (
+    <AffichageTableau produits={produits} />
+  );
 }
 
-export default AffichageTableau;
+export default TriParNom;
