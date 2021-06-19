@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import BarreNavigation from './Composants/BarreNavigation'
 import Container from 'react-bootstrap/Container'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import PageClient from './Composants/SectionClient/PageClient'
+import PageClient from './Composants/SectionClient/pageClient'
 import PageAccueil from './pages/PageAccueil';
 import PageAdministrateur from './pages/PageAdministrateur';
 import PageAjouter from './pages/PageAjouter';
