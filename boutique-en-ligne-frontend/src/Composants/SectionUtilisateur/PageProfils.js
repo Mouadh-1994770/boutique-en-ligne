@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import FormulaireConnexion from "./FormulaireConnexion";
-import FormulaireInscription from "./FormulaireInscription";
+import PageConnexion from "./PageConnexion";
+import PageInscription from "./PageInscription";
 import Button from "react-bootstrap/Button";
 
-const FormulaireProfil = () => {
+const PageProfil = () => {
     const [connexion, setConnexion] = useState();
     const [deconnexion, setDeconnexion] = useState();
 
@@ -30,10 +30,10 @@ const FormulaireProfil = () => {
                 variant="outline-success" style={{fontWeight: "bold"}}>
                 Se connecter
             </Button>
-            {connexion && <FormulaireConnexion />}
-            {deconnexion && <FormulaireInscription />}
+            {connexion && <PageConnexion />}
+            {deconnexion && <PageInscription />}
         </>
     );
 };
 
-export default FormulaireProfil;
+export default PageProfil;
