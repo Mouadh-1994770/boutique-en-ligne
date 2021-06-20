@@ -5,10 +5,6 @@ import {
 } from 'react';
 
 import Alert from 'react-bootstrap/Alert'
-import Table from 'react-bootstrap/Table'
-import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
-import { Nav, NavDropdown, FormControl, Form, Navbar, Col, Row, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TriParCategorie from './tri/TriParCategorie';
 import TriParNom from './tri/TriParNom';

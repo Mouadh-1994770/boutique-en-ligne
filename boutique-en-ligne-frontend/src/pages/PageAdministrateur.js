@@ -6,7 +6,7 @@ import {
 import ListeProduitsAdministrateur from '../Composants/ListeProduitsAdministrateur';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import { Nav, NavDropdown, FormControl, Form, Navbar, Col, Row, Container } from 'react-bootstrap';
+import { Nav, NavDropdown, FormControl, Form, Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function PageAdministrateur() {

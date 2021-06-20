@@ -1,7 +1,4 @@
 import React from 'react';
-import Table from 'react-bootstrap/Table'
-import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
 import AffichageTableau from '../AffichageTableau';
 
 function TriParQuantite({ produits, ordre }) {

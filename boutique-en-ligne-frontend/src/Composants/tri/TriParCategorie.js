@@ -1,8 +1,4 @@
 import React from 'react';
-import Alert from 'react-bootstrap/Alert'
-import Table from 'react-bootstrap/Table'
-import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
 import AffichageTableau from '../AffichageTableau';
 
 function TriParCategorie({ produits, ordre }) {
