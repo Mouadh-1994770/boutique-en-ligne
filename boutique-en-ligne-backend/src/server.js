@@ -194,24 +194,18 @@ async function utilisateurExiste(db, utilisateur ={nom: nom,password: password})
     return verificationUtilisateur !== null;
 }
 
-app.post('/api/utilisateur/existe', (requete, reponse) => {
+app.post('/api/utilisateur/existe/', async (requete, reponse) => {
+    const {nom, password } = requete.body;
 
-    utiliserDB(async (db) => {
-        let user= await db.collection('utilisateur').fineOne({ nom: requete.body.nom});
-        if(user){
-            const validPassword = await bcryp.compare(body.password, user.password);
-            if(validPassword){
-                reponse.status(200).json({messsage:  "Mot de passe valide" })
-            }
-            else{
-                reponse.status(400).json({ error: "Mot de passe invalide" });
-            }
+    if(nom !== undefined && password !== undefined){
+        utiliserDB(async (db) => {
+        const verificationUtilisateur = await db.collection('utilisateur').findOne({nom : nom, password:password});
+        if(!verificationUtilisateur){
+            reponse.status(404).json(verificationUtilisateur);
         }
-        else{
-            reponse.status(401).json({ error: "L'utilisateur n'existe pas" });
-        }
-        reponse.send(true);
-    });
+        reponse.status(200).json(verificationUtilisateur);
+        }, reponse)
+    }
 });
 
 
