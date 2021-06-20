@@ -20,10 +20,10 @@ function BarreNavigation(props) {
                 <div className="con">
                         {props.estConnecte
                         ?
-                        <Button variant="outline-success">"Se connecter"</Button>                        
+                        <Button variant="outline-success">Se connecter</Button>                        
                         :
                         <LinkContainer to="/profil">
-                        <Button variant="outline-success">"S'identifier/S'inscrire"</Button>
+                        <Button variant="outline-success">S'identifier/S'inscrire</Button>
                         </LinkContainer>
                         }
                     </div>

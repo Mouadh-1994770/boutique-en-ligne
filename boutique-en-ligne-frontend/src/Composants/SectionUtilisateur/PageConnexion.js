@@ -5,7 +5,7 @@ import "./Page.css";
 import Button from 'react-bootstrap/Button';
 
 
-function PageConnexion(props) {
+function PageConnexion() {
     const [values, setValues] = useState({nom: "", password: ""});
     const [errors, setErrors] = useState({});
     const [dataIsCorrect, setDataIsCorrect] = useState(false);

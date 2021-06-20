@@ -9,9 +9,9 @@ import Container from 'react-bootstrap/Col'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Pagination from './Pagination'
+//import PageConnexion from '../SectionUtilisateur/PageConnexion';
 import NombreProduitParPublication from './NombreProduitParPublication'
-function AffichageProduits({ produits, nomClient }) {
-
+function AffichageProduits({ produits}) {  
     const [page, setPage] = useState(5);
     const [pageCourant, setPageCourant] = useState(1);
     const [quantiteProduit, setQuantite] = useState(produits);
@@ -23,7 +23,7 @@ function AffichageProduits({ produits, nomClient }) {
     
     function AjouterProduitAuPanier(produit, index) {
         const EnvoyerProduit = async () => {
-            await fetch(`/api/panier/ajouter/${nomClient}`, {
+            await fetch(`/api/panier/ajouter/${"Alain"}`, {
                 method: 'post',
                 body: JSON.stringify({ produit }),
                 headers: {
