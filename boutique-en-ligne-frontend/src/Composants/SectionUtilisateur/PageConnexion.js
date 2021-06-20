@@ -35,7 +35,7 @@ function PageConnexion() {
             verifierUtilisateur(utilisateur)
             .then(utilisateurExistant =>{  
                 if(utilisateurExistant){
-                    if(utilisateur.nom ==="admin" && utilisateur.password ==="admin"){
+                    if(utilisateur.nom === "admin" && utilisateur.password === "admin"){
                         setRole("Administrateur") 
                     }else{
                         setRole("Client")             
@@ -61,7 +61,7 @@ function PageConnexion() {
 
     function AfficherRedirection() {
         if(rediriger === true){
-            if(role ==="admin"){
+            if(role ==="administrateur"){
                 return <Redirect to="/admin" />
             }
             else{                
@@ -82,7 +82,7 @@ function PageConnexion() {
             </div>
             <Button className="mt-2" variant="outline-success"  id ="connecter" style={{ fontWeight: "bold" }} onClick={envoyerFormulaire} >
             Se connecter
-            </Button>           
+            </Button>                   
         </>
     );
 };
