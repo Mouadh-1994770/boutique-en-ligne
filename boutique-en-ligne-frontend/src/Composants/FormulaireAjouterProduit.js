@@ -7,6 +7,7 @@ import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
 
+
 function FormulaireAjouterProduit({ id }) {
     const [nom, setNom] = useState('');
     const [description, setDescription] = useState('');
@@ -14,6 +15,14 @@ function FormulaireAjouterProduit({ id }) {
     const [prix, setPrix] = useState('');
     const [rabais, setRabais] = useState('');
     const [quantite, setQuantite] = useState('');
+
+    const [nomEcrit, setNomEcrit] = useState(true);
+    const [descriptionEcrite, setDescriptionEcrite] = useState(true);
+    const [categorieEcrite, setCategorieEcrite] = useState(true);
+    const [prixEcrit, setPrixEcrit] = useState(true);
+    const [rabaisEcrit, setRabaisEcrit] = useState(true);
+    const [quantiteEcrite, setQuantiteEcrite] = useState(true);
+
     const [rediriger, setRediriger] = useState(false);
 
     const envoyerFormulaire = async () => {
@@ -26,10 +35,23 @@ function FormulaireAjouterProduit({ id }) {
         });
         setRediriger(true);
     };
+    function validerFormulaire() {
+        setNomEcrit(nom !== "");
+        setDescriptionEcrite(description !== "");
+        setCategorieEcrite(categorie !== "");
+        setPrixEcrit(prix !== "");
+        setRabaisEcrit(rabais !== "");
+        setQuantiteEcrite(quantite !== "");
+
+        if ((nom !== "") && (description !== "") && (categorie !== "") && (prix !== "")
+            && (rabais !== "") && (quantite !== "")) {
+            envoyerFormulaire();
+        }
+    }
 
     function AfficherRedirection() {
         if (rediriger === true) {
-            return <Redirect to="/admin" />
+            return <Redirect to="/administrateur" />
         }
     }
 
@@ -38,42 +60,72 @@ function FormulaireAjouterProduit({ id }) {
             {AfficherRedirection()}
             <Form className="mb-1">
                 <Form.Group>
-                    <Form.Label>Nom</Form.Label>
+                    <Form.Label>Nom
+                    {nomEcrit === false ?
+                            <span className="text-danger"> * Vous devez entrer un nom!</span>
+                            : undefined
+                        }
+                    </Form.Label>
                     <Form.Control type="text" value={nom}
                         onChange={(event) => setNom(event.target.value)} />
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Description</Form.Label>
+                    <Form.Label>Description
+                    {descriptionEcrite === false ?
+                            <span className="text-danger"> * Vous devez entrer une description!</span>
+                            : undefined
+                        }
+                    </Form.Label>
                     <Form.Control type="text" value={description}
                         onChange={(event) => setDescription(event.target.value)} />
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Catégorie</Form.Label>
+                    <Form.Label>Catégorie
+                    {categorieEcrite === false ?
+                            <span className="text-danger"> * Vous devez entrer une catégorie!</span>
+                            : undefined
+                        }
+                    </Form.Label>
                     <Form.Control type="text" value={categorie}
                         onChange={(event) => setCategorie(event.target.value)} />
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Prix</Form.Label>
+                    <Form.Label>Prix
+                    {prixEcrit === false ?
+                            <span className="text-danger"> * Vous devez entrer un prix!</span>
+                            : undefined
+                        }
+                    </Form.Label>
                     <Form.Control type="number" value={prix}
                         onChange={(event) => setPrix(event.target.value)} />
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Rabais</Form.Label>
+                    <Form.Label>Rabais
+                    {rabaisEcrit === false ?
+                            <span className="text-danger"> * Vous devez entrer un rabais!</span>
+                            : undefined
+                        }
+                    </Form.Label>
                     <Form.Control type="number" value={rabais}
                         onChange={(event) => setRabais(event.target.value)} />
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Quantité</Form.Label>
+                    <Form.Label>Quantité
+                    {quantiteEcrite === false ?
+                            <span className="text-danger"> * Vous devez entrer une quantité!</span>
+                            : undefined
+                        }
+                    </Form.Label>
                     <Form.Control type="number" value={quantite}
                         onChange={(event) => setQuantite(event.target.value)} />
                 </Form.Group>
 
-                <Button variant="primary" onClick={envoyerFormulaire} >
+                <Button variant="primary" onClick={validerFormulaire} >
                     Ajouter
             </Button>
             </Form>
