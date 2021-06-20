@@ -1,15 +1,16 @@
-function PageValidation(values, modeConnexion = false) {
+function pageValidation(values, modeInscription = false) {
+
     let errors = {};
     errors.hasError = false;
 
     if (!values.nom) {
         errors.nom = "Le nom est obligatoire";
         errors.hasError = true;
-    }else if(!new RegExp(/^[A-Za-z]+$/).test(values.nom)){
+    }
+    else if(!new RegExp(/^[A-Za-z]+$/).test(values.nom)){
         errors.nom = "Le nom est invalide";
         errors.hasError = true;
-    } 
-       
+    }     
     if (!values.password ) {
         errors.password = "Le mot de passe est obligatoire";
         errors.hasError = true;
@@ -18,10 +19,10 @@ function PageValidation(values, modeConnexion = false) {
         errors.password = "Le mot de passe doit avoir plus de 5 caractères";
         errors.hasError = true;
     }
-    if(!modeConnexion && values.password !== values.confirmPassword){
+    if(modeInscription && values.password !== values.confirmPassword){
         errors.confirmPassword = "Les mots de passe doivent être identiques";
         errors.hasError = true;
     }
     return errors
 }
-export default PageValidation;
+export default pageValidation;

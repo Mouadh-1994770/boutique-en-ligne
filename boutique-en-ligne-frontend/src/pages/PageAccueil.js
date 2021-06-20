@@ -8,7 +8,7 @@ export default function PageAccueil() {
         <Container>
           <Row>
             <Col>
-              <h1>Bonne magasinage</h1>
+              <h1>Bon magasinage</h1>
               <img src={`accueil.png`} height="600" width="1300" />
             </Col>
           </Row>

@@ -5,7 +5,7 @@ import "./Page.css";
 import Button from 'react-bootstrap/Button';
 
 
-function PageConnexion() {
+function PageConnexion(props) {
     const [values, setValues] = useState({nom: "", password: ""});
     const [errors, setErrors] = useState({});
     const [dataIsCorrect, setDataIsCorrect] = useState(false);
@@ -39,7 +39,8 @@ function PageConnexion() {
                         setRole("Administrateur") 
                     }else{
                         setRole("Client")             
-                    }
+                    }     
+                   // props.setEstConnecte(true);
                     setRediriger(true);
                 }
             });
@@ -61,10 +62,10 @@ function PageConnexion() {
 
     function AfficherRedirection() {
         if(rediriger === true){
-            if(role ==="administrateur"){
+            if(role ==="Administrateur"){
                 return <Redirect to="/admin" />
             }
-            else{                
+            else{   
                 return <Redirect to= "/Client"/>
             };
         } 
