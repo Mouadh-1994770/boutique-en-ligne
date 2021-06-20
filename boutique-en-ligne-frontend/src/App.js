@@ -12,6 +12,10 @@ import PageModifier from './pages/PageModifier';
 import PageSupprimer from './pages/PageSupprimer';
 import Page404 from './pages/Page404';
 
+import PageProfil from './Composants/SectionUtilisateur/PageProfils';
+import PageConnexion from './Composants/SectionUtilisateur/PageConnexion';
+import PageInscription from './Composants/SectionUtilisateur/PageInscription';
+
 function App() {
   return (
     <Router>
@@ -19,11 +23,15 @@ function App() {
         <BarreNavigation />
         <Switch>
           <Route path="/" component={PageAccueil} exact />
-          <Route path="/Client" component={PageClient} exact />
+          <Route path="/Client" component={PageClient}/>
           <Route path="/admin" component={PageAdministrateur} />
           <Route path="/ajouter" component={PageAjouter} />
           <Route path="/modifier/:id" component={PageModifier} />
           <Route path="/supprimer/:id" component={PageSupprimer} />
+
+          <Route path="/profil" component={PageProfil} />
+          <Route path="/inscription" component={PageInscription} />
+          <Route path="/connexion" component={PageConnexion} />
           <Route component={Page404} />
         </Switch>
       </Container>
