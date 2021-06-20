@@ -62,7 +62,7 @@ function PageConnexion() {
     function AfficherRedirection() {
         if(rediriger === true){
             if(role ==="Administrateur"){
-                return <Redirect to="/Administrateur" />
+                return <Redirect to="/admin" />
             }
             else{                
                 return <Redirect to= "/Client"/>
