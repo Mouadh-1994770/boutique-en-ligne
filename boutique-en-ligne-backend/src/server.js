@@ -159,30 +159,40 @@ app.post('/api/panier/ajouter/:nomClient', (requete, reponse) => {
 });
 
 app.post('/api/utilisateur/ajouter', async (requete, reponse) => {
-    const {role, nom, password, confirmPassword} = requete.body;
 
-    if(role !==undefined && nom !== undefined && password !== undefined && confirmPassword !== undefined ){  
+    const { nom, password, confirmPassword} = requete.body;
+
+    if(nom !== undefined && password !== undefined && confirmPassword !== undefined ){
+       let user ={
+        nom: nom,
+        password: password,
+        confirmPassword: confirmPassword, 
+    }
         utiliserDB(async (db) => {
-            
-         let user =  await db.collection('utilisateur').insertOne({
-                role:role,
-                nom: nom,
-                password: password,
-                confirmPassword: confirmPassword, 
-            });
-            reponse.status(200).send("Utilisateur Ajouté")
+
+            let utilisateurExist = await utilisateurExiste(db, user);
+            if(!utilisateurExist){
+                await db.collection('utilisateur').insertOne(user);
+                reponse.status(200).send("Utilisateur Ajouté");
+            }else{
+                reponse.status(406).send("Utilisateur existe déjà");
+            }        
         }, reponse).catch(
-            () => reponse.status(400).send("Erreur : l'utilisateur n'est pas ajouté ")
+            () => reponse.status(500).send("Erreur : l'utilisateur n'est pas ajouté ")
         );  
     }
     else{
         reponse.status(500).send(`Certains paramètres ne sont pas définis :
-            - nom: ${role}
             - nom: ${nom}
             - password: ${password}
             - confirmPassword: ${confirmPassword}`);
     }          
 });
+
+async function utilisateurExiste(db, utilisateur ={nom: nom,password: password}){
+    const verificationUtilisateur = await db.collection('utilisateur').findOne(utilisateur);
+    return verificationUtilisateur !== null;
+}
 
 app.post('/api/utilisateur/existe', (requete, reponse) => {
 
