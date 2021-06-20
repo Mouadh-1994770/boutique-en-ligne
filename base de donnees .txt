@@ -1,0 +1,326 @@
+Le nom de la base de donnée est boutique
+les collections : produits, panier, utilisateur
+
+use boutique
+db.produits.insert([
+{
+  "nom": "sac à main",
+  "description": "est un petit sac a un long Vous êtes du genre à tout traîner avec vous",
+  "categorie": "accessoire",
+  "prix": 76.99,
+  "rabais": 10,
+  "quantite": 2
+},{
+  "nom": "attache cheveux",
+  "description": "tissus synthétique",
+  "categorie": "Accessoire",
+  "prix": 4,
+  "rabais": 0,
+  "quantite": 74
+},{
+  "nom": "pantalon",
+  "description": "cotton jean",
+  "categorie" : "vêtement",
+  "prix": 10.5,
+  "rabais" : 5,
+  "quantite" :78
+},
+{
+  "nom": "espadrille",
+  "description": "pour jogging",
+  "categorie": "chaussure",
+  "prix": 36,
+  "rabais": 20,
+  "quantite": 3
+},{
+  "nom": "espadrille",
+  "description": "pour jogging",
+ "categorie": "chaussure",
+  "prix": 36,
+  "rabais": 20,
+  "quantite": 32
+},{
+  "nom": "valise enfant",
+  "description": "Extensible en tissu",
+  "categorie": "sac",
+  "prix": 78,
+  "rabais": 50,
+  "quantite": 12
+},{
+  "nom": "pull",
+  "description": "laine",
+  "categorie": "vêtement",
+  "prix": 23,
+  "rabais": 30,
+  "quantite": 39
+},{
+  "nom": "valise enfant",
+  "description": "Extensible en tissu",
+  "categorie": "sac",
+  "prix": 78,
+  "rabais": 50,
+  "quantite": 12
+},{
+  "nom": "tangue",
+  "description": "synthetique cuir",
+  "categorie" : "chaussure",
+  "prix": 29,
+  "rabais": 22,
+  "quantite": 33
+},{
+  "nom": "sacoche",
+ "description": "Un sac banane matelassé Notre sac à la taille Gur",
+  "categorie": "sac",
+  "prix": 20,
+  "rabais": 0,
+  "quantite": 0
+},{
+  "nom": "sacoche",
+  "description": "Un sac banane matelassé  Notre sac à la taille Gurlpleaze propose des anneaux dorés et une fermeture à rabat magnétique qui vous permet d'aller chercher vos lunettes ou votre téléphone en toute facilité ",
+  "categorie": "sac",
+  "prix": 20,
+  "rabais": 0,
+  "quantite": 0
+},{
+  "nom": "chemise",
+  "description": "est une chemise cotton",
+  "categorie": "vêtements", 
+  "prix": 10, 
+  "rabais": 50,
+  "quantite": 5
+},{
+  "nom": "robe",
+  "description": "robe manche long ",
+  "categorie": "vêtements",
+  "prix": 25,
+  "rabais": 0,
+  "quantite": 2
+},{
+  "nom": "pochette",
+  "description": "largeur 3p longueure 6p ",
+  "categorie": "sac a main",
+  "prix": 15,
+  "rabais": 2,
+  "quantite": 6
+},{
+  "nom": "sacoche",
+  "description": "est un petit sac a un long Vous êtes du genre à tout traîner avec vous? Notre sac spacieux et stylé Kaoisael est idéal pour ceux qui se déplacent avec un véritable trousseau Un choix tendance pour garder tous vos essentiels (et plus) à portée de main",
+  "categorie": "sac",
+  "prix": 20,
+  "rabais": 0,
+  "quantite": 0
+},{
+  "nom": "boucle oreilles ",
+  "description": "en argent ",
+  "categorie": "accessoires ",
+  "prix": 10,
+  "rabais": 40,
+  "quantite": 5
+},{
+  
+  "nom": "robe",
+  "description": "robe pour fille xl long ",
+  "categorie": "vêtements",
+  "prix": 25,
+  "rabais": 0,
+  "quantite": 2
+},{
+  
+  "nom": "pantalon",
+  "description": "jeans noir",
+  "categorie": "vêtements",
+  "prix": 15,
+  "rabais": 2,
+  "quantite": 6
+},{
+  "nom": "sandale",
+  "description": "sandale a une talon plat",
+  "categorie": "chaussure",
+  "prix": 50,
+  "rabais": 10,
+  "quantite": 2
+},{
+  
+  "nom": "bottes",
+  "description": "chausure chaude",
+  "categorie": "chaussure",
+  "prix": 50,
+  "rabais": 0,
+  "quantite": 2
+},{
+ 
+  "nom": "sandale",
+  "description": "sandale a une talon plat",
+  "categorie": "chaussure",
+  "prix": 5,
+  "rabais": 6,
+  "quantite": 0
+},{
+  
+  "nom": "sandale",
+  "description": "sandale a une talon plat",
+  "categorie": "chaussure",
+  "prix": 50,
+  "rabais": 10,
+  "quantite": 2
+},{
+  "nom": "sandale",
+  "description": "sandale a une talon plat",
+  "categorie": "chaussure",
+  "prix": 50,
+  "rabais": 10,
+  "quantite": 2
+},{
+  "nom": "sandale",
+  "description": "sandale a une talon plat",
+  "categorie": "chaussure",
+  "prix": 50,
+  "rabais": 10,
+  "quantite": 2
+},{
+  "nom": "sandale",
+  "description": "sandale a une talon plat Sandale Bout rondSans lacets Tige surpiquée Haut Textile végétalien Doublure Textile végétalien Semelle Cuir végétalien",
+  "categorie": "chaussure",
+  "prix": 50,
+  "rabais": 10,
+  "quantite": 2
+},{
+  "nom": "sandale",
+  "description": "sandale a une talon plat Sandale Bout rondSans lacets Tige surpiquée Haut Textile végétalien Doublure Textile végétalien Semelle Cuir végétalien",
+  "categorie": "chaussure",
+  "prix": 50,
+  "rabais": 10,
+  "quantite": 2
+},
+{"nom" : "sac à main","description" : "est un petit sac a un long Vous êtes du genre à tout traîner avec vous","categorie" :"accessoire","prix" : 76.99,"rabais" :10,"quantite" :2},
+{"nom" : "attache cheveux","description" : "tissus synthétique","categorie" : "Accessoire","prix" :4,"rabais" :0,"quantite" :74},
+{"nom" : "pantalon","description" : "cotton jean","categorie" : "vêtement","prix" :10.5,"rabais" : 0,"quantite" :78},
+{"nom" : "espadrille","description" : "pour jogging","categorie" : "chaussure","prix" :36,"rabais" :20,"quantite" :3},
+{"nom" : "talon","description" : "pour jogging","categorie" : "chaussure","prix" :36,"rabais" :20,"quantite" :32},
+{"nom" : "valise enfant","description" : "Extensible en tissu","categorie" : "sac","prix" : 78,"rabais" :0,"quantite" :12},
+{"nom" : "pull","description" : "laine","categorie" : "vêtement","prix" : 23,"rabais" : 30,"quantite" :39},
+{"nom" : "valise enfant","description" : "Extensible en tissu","categorie" : "sac","prix" : 78,"rabais" :50,"quantite" :12},
+{"nom" : "tangue","description" : "synthetique cuir","categorie" : "chaussure","prix" : 29,"rabais" : 22,"quantite" : 33},
+{"nom":"portefeulle","description":"Un sac banane matelassé? Notre sac à la taille Gur","categorie":"sac","prix":20,"rabais":0,"quantite":0},
+{"nom": "sacoche","description": "Un sac banane matelassé  Notre sac à la taille Gurlpleaze propose des anneaux dorés et une fermeture à rabat magnétique qui vous permet d'aller chercher vos lunettes ou votre téléphone en toute facilité ",
+ "categorie": "sac","prix": 20,"rabais": 0,"quantite": 0},
+{"nom": "chemise", "description": "est un chemise cotton", "categorie": "vêtements", "prix": 10, "rabais": 50, "quantite": 5},
+{
+  "nom": "robe",
+  "description": "robe manche long ",
+  "categorie": "vêtements",
+  "prix": 25,
+  "rabais": 0,
+  "quantite": 2
+},{
+  "nom": "pouchette",
+  "description": "largeur 3p longueure 6p ",
+  "categorie": "sac a main",
+  "prix": 15,
+  "rabais": 2,
+  "quantite": 6
+},{
+  "nom": "sacoche",
+  "description": "est un petit sac a un long Vous êtes du genre à tout traîner avec vous? Notre sac spacieux et stylé Kaoisael est idéal pour ceux qui se déplacent avec un véritable trousseau Un choix tendance pour garder tous vos essentiels (et plus) à portée de main",
+  "categorie": "sac",
+  "prix": 20,
+  "rabais": 0,
+  "quantite": 0
+},{
+  "nom": "boucle oreilles ",
+  "description": "en argent ",
+  "categorie": "accessoires ",
+  "prix": 10,
+  "rabais": 40,
+  "quantite": 5
+},{
+  
+  "nom": "robe",
+  "description": "robe pour fille xl long ",
+  "categorie": "vêtements",
+  "prix": 25,
+  "rabais": 0,
+  "quantite": 2
+},{
+  
+  "nom": "pantalon",
+  "description": "jeans noir",
+  "categorie": "vêtements",
+  "prix": 15,
+  "rabais": 2,
+  "quantite": 6
+},{
+  "nom": "manche long",
+  "description": "Poches militaires recouvertes appliquées avec rabat boutonné à l'avant, ouvertures chauffe-mains sur les côtés",
+  "categorie": "vêtements",
+  "prix": 50,
+  "rabais": 10,
+  "quantite": 2
+},{
+  
+  "nom": "bottes",
+  "description": "chausure chaude",
+  "categorie": "chaussure",
+  "prix": 50,
+  "rabais": 0,
+  "quantite": 2
+},{
+ 
+  "nom": "sandale",
+  "description": "La paire d'été légère parfaite, ces espadrilles décontractées s'enfilent facilement pour que vous puissiez passer votre journée sans soucis",
+  "categorie": "chaussure",
+  "prix": 5,
+  "rabais": 6,
+  "quantite": 0
+},{
+  
+  "nom": "sandale",
+  "description": " La paire d'été légère parfaite, ces espadrilles décontractées s'enfilent facilement pour que vous puissiez passer votre journée sans soucis",
+  "categorie": "chaussure",
+  "prix": 50,
+  "rabais": 10,
+  "quantite": 2
+},{
+  "nom": "talon plat",
+  "description": "Vous ne pouvez pas être plus relaxe que ces sandales athlétiques en caoutchouc. De la piscine à l'épicerie et n'importe où entre les deux, ces sandales polyvalentes conçues avec des semelles intérieures en mousse d'algues EVA dérivée de la biomasse d'algues sont aussi décontractées (et durables) que possible",
+  "categorie": "chaussure",
+  "prix": 50,
+  "rabais": 10,
+  "quantite": 2
+},{
+  "nom": "robe",
+  "description": "robe manche long ",
+  "categorie": "vêtements",
+  "prix": 25,
+  "rabais": 0,
+  "quantite": 2
+},{
+  "nom": "chemise",
+  "description": "Poches militaires recouvertes appliquées avec rabat boutonné à l'avant, ouvertures chauffe-mains sur les côtés ",
+  "categorie": "vêtements",
+  "prix": 150,
+  "rabais": 60,
+  "quantite": 6
+},{
+  "nom": "sacoche",
+  "description": "est un petit sac a un long Vous êtes du genre à tout traîner avec vous? Notre sac spacieux et stylé Kaoisael est idéal pour ceux qui se déplacent avec un véritable trousseau Un choix tendance pour garder tous vos essentiels (et plus) à portée de main",
+  "categorie": "sac",
+  "prix": 20,
+  "rabais": 0,
+  "quantite": 0
+},{
+  "nom": "boucle oreilles ",
+  "description": "en argent ",
+  "categorie": "accessoires ",
+  "prix": 10,
+  "rabais": 40,
+  "quantite": 5
+}
+])
+
+db.createCollection("panier")
+db.panier.insert([{"nomClient":"Alain","produits":[]}])
+db.panier.createCollection('utilisateur')
+db.utilisateur.insert([{"nom":"admin","password":"admin"}])
+
+
