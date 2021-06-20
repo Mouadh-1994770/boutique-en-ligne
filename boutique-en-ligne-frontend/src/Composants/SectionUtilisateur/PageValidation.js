@@ -1,11 +1,7 @@
 function PageValidation(values, modeConnexion = false) {
     let errors = {};
-
     errors.hasError = false;
-    if (!values.role) {
-        errors.role = "Le role est obligatoire";
-        errors.hasError = true;
-    }
+
     if (!values.nom) {
         errors.nom = "Le nom est obligatoire";
         errors.hasError = true;

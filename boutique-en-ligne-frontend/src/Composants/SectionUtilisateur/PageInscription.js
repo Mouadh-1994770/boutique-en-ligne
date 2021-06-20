@@ -1,25 +1,14 @@
 import React, { useState, useEffect } from "react";
-import PageValidation from "./PageValidation";
-import { Redirect } from 'react-router-dom';
+import pageValidation from "./PageValidation";
 import "./Page.css";
 import Button from 'react-bootstrap/Button';
 
 
 const PageInscription = () => {
-    const [values, setValues] = useState({role:"", nom: "", password: "", confirmPassword: ""});
+    const [values, setValues] = useState({ nom: "", password: "", confirmPassword: ""});
     const [errors, setErrors] = useState({});
     const [dataIsCorrect, setDataIsCorrect] = useState(false);
-    const [rediriger, setRediriger] = useState(false);
-
-    useEffect(()=>{
-        if(values.role ==="Admin"){
-            setValues({role:"Admin"
-        });
-        }else if(values.role ==="Client"){
-            setValues({role:"Client"
-        });
-        } 
-    },[values.role])
+    const [message, setMessage] = useState();
 
     const handleChange = (event) => {
         setValues({
@@ -29,18 +18,18 @@ const PageInscription = () => {
     };
 
     const envoyerFormulaire = async (utilisateur) => {
-        await fetch(`/api/utilisateur/ajouter`, {
+     const resultat = await fetch(`/api/utilisateur/ajouter`, {
             method: 'post',
             body: JSON.stringify(utilisateur),
             headers: {
                 'Content-Type': 'application/json'
             }               
-        });
-        setRediriger(true);       
+        }); 
+        return resultat;
     };
 
     const validerFormulaire = () => {
-        let errors = PageValidation(values, true);
+        let errors = pageValidation(values, true);
         setErrors(errors);
         setDataIsCorrect(!errors.hasError);
     }
@@ -48,32 +37,26 @@ const PageInscription = () => {
     useEffect(()=>{
         if(dataIsCorrect){
             let utilisateur = {
-                role: values.role,
                 nom:values.nom, 
                 password:values.password,
                 confirmPassword:values.confirmPassword
             }  
-            envoyerFormulaire(utilisateur);          
+            envoyerFormulaire(utilisateur)
+            .then(response =>{               
+                if(response.status === 200){
+                    setMessage({className:"success",value:"L'utilisateur a été ajouté"});
+                    setTimeout(()=>{document.getElementById('connecter').click()}, 5000);
+                }else if (response.status === 406){
+                    setMessage({className:"error",value:"L'utilisateur existe déjà"});
+                }
+            });          
         }          
         setDataIsCorrect(false)
 
     }, [dataIsCorrect]);
 
-   
-    function AfficherRedirection() {
-        if (rediriger === true) {
-            return <Redirect to="/" />
-        }
-    }
-
     return (
         <>
-            {AfficherRedirection()}
-            <div className="name" onChange={handleChange}>
-                <input className="input1"  type="radio" name="role" id="role"  value="Admin" /><h4>Admin</h4>
-                <input className="input1"  type="radio" name="role" id="role"  value="Client" /><h4>Client</h4>
-                {errors.role && <p className="error">{errors.role}</p>}
-            </div>             
             <div className="name">
                 <input className="input" placeholder="Nom utilisateur" type="text" name="nom" id="nom" onChange={handleChange} value={values.nom} />
                 {errors.nom && <p className="error">{errors.nom}</p>}
@@ -88,14 +71,14 @@ const PageInscription = () => {
             </div> 
             <Button className="mt-2" variant="outline-success" style={{ fontWeight: "bold" }} onClick={validerFormulaire} >
             Créer votre compte
-            </Button>      
+            </Button>  
+            <br/>  
+            <br/>  
+            {message && <p className={message.className}>{message.value}</p>}  
         </>
     );
     
 };
 export default PageInscription;
-
-
-
 
 
