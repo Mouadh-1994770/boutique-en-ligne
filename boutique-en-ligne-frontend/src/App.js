@@ -23,7 +23,7 @@ function App() {
         <BarreNavigation estConnecte={estConnecte}/>
         <Switch>
           <Route path="/" component={PageAccueil} exact />
-          <Route path="/Client" component={PageClient}/>
+          <Route path="/Client" component={pageClient}/>
           <Route path="/admin" component={PageAdministrateur} />
           <Route path="/ajouter" component={PageAjouter} />
           <Route path="/modifier/:id" component={PageModifier} />
