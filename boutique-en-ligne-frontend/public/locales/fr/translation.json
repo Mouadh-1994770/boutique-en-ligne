@@ -1,0 +1,12 @@
+{
+    "ajouterproduitaupanier":"Ajouter produit au panier",
+    "filtrerparcategories":"Filtrer par catégies",
+    "toutlescategories":"Tout les categories ",
+    "voirnosproduits":"Voir nos produits",
+    "selectionnerlenombredesproduitsparpage":"Sélectionner le nombre des produits par page",
+    "tous":"tous",
+   "leproduitestbienajouteaupanier":"le produit est bien ajouté au panier",
+    "leproduitnapaseteajoutee":"Leproduit n'a pas été ajoutee",
+   "produitenrupture": "Produit en rupture",
+   "aucunproduitdisponible":"Aucun produit disponible"
+}

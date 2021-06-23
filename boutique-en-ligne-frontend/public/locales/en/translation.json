@@ -1,0 +1,12 @@
+{
+    "ajouterproduitaupanier":"Add product to cart",
+    "filtrerparcategories":"Filter by categories",
+    "toutlescategories":"All categories",
+    "voirnosproduits": "See our products",
+    "selectionnerlenombredesproduitsparpage": "Select the number of products per page",
+    "tous": "All",
+    "leproduitestbienajouteaupanier":"The product has been added to the basket",
+    "produitenrupture": "Out of stock product",
+    "leproduitnapaseteajoutee":"The product has not been added",
+    "aucunproduitdisponible":"No product available"
+}
