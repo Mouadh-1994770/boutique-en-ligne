@@ -6,7 +6,9 @@ import Row from 'react-bootstrap/Row'
 import Form from 'react-bootstrap/Form'
 import { useState, useEffect } from 'react';
 import AffichageProduits from './AffichageProduits'
+import { useTranslation } from 'react-i18next';
 function ProduitsParCategorie({ produits, Categories }) {
+    const { t } = useTranslation();
     const [listFilter, setListeFilter] = useState([])
     const [listeproduits, setProduits] = useState([]);
     const [tous, setTous] = useState(true)
@@ -76,7 +78,7 @@ function ProduitsParCategorie({ produits, Categories }) {
                         <Col xs="2">
                             <div>
                                 <Form>
-                                    <h5> Filtrer par catégories</h5>
+                                    <h5>{t("filtrerparcategories")}</h5>
                                     <Form.Group className="mb-3" >
                                         <Form.Check key="all" checked={selectionnerProduits}
                                             type="checkbox"
@@ -97,7 +99,7 @@ function ProduitsParCategorie({ produits, Categories }) {
                                                 }
 
                                             }}
-                                            label="Tous les categories" />
+                                            label={t("toutlescategories")} />
                                         {
                                             CreerChekBox()
                                         }

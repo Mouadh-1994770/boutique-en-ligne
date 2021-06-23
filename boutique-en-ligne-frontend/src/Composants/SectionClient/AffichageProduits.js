@@ -9,9 +9,11 @@ import Container from 'react-bootstrap/Col'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Pagination from './Pagination'
+import { useTranslation } from 'react-i18next';
 //import PageConnexion from '../SectionUtilisateur/PageConnexion';
 import NombreProduitParPublication from './NombreProduitParPublication'
 function AffichageProduits({ produits}) {  
+    const { t } = useTranslation();
     const [page, setPage] = useState(5);
     const [pageCourant, setPageCourant] = useState(1);
     const [quantiteProduit, setQuantite] = useState(produits);
@@ -32,10 +34,10 @@ function AffichageProduits({ produits}) {
             })
                 .then((response) => {
                     if (response.status === 200) {
-                        alert("le produit est bien ajouté au panier")
+                        alert(t("leproduitestbienajouteaupanier"))
                     }
                     else {
-                        alert("Le produit n'a pas été ajoutée")
+                        alert(t("Leproduitnapaseteajoutee"))
                     }
                 })
         }
@@ -54,7 +56,7 @@ function AffichageProduits({ produits}) {
     return (
         <Container>
              <Row>
-            <Alert variant={"primary"} className="mt-3"> <h1>Voir nos produits</h1> </Alert>
+            <Alert variant={"primary"} className="mt-3"> <h1>{t("voirnosproduits")}</h1> </Alert>
             <NombreProduitParPublication handleChange={handleChange} longueurList={longueurList} />
             </Row>
             <Row>
@@ -72,8 +74,8 @@ function AffichageProduits({ produits}) {
                                         <Card.Text className="text-danger">{produit.rabais ? "nouveauPrix:  " : ""} {produit.rabais ? produit.prix - (produit.prix * produit.rabais / 100) + "$" : " "}</Card.Text>
                                         <Card.Text variant="danger">Quantite: {produit.quantite}</Card.Text>
                                         <Card.Text> {produit.quantite > 0 ?
-                                            <Button onClick={() => AjouterProduitAuPanier(produit, index)}>Ajouter produit au panier</Button> :
-                                            <Alert variant="danger">produit en rupture</Alert>}
+                                            <Button onClick={() => AjouterProduitAuPanier(produit, index)}>{t("ajouterproduitaupanier")}</Button> :
+                                            <Alert variant="danger">{t("produitenrupture")}</Alert>}
                                         </Card.Text>
 
                                     </Card.Body>

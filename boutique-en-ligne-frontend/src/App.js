@@ -14,12 +14,13 @@ import Page404 from './pages/Page404';
 import PageProfil from './Composants/SectionUtilisateur/PageProfils';
 import PageConnexion from './Composants/SectionUtilisateur/PageConnexion';
 import PageInscription from './Composants/SectionUtilisateur/PageInscription';
-
+import Langages from './Composants/Langages'
 function App() {
   const [estConnecte,  setEstConnecte] = useState(false);
   return (
     <Router>
       <Container>
+        <Langages/>
         <BarreNavigation estConnecte={estConnecte}/>
         <Switch>
           <Route path="/" component={PageAccueil} exact />
